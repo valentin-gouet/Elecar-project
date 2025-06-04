@@ -2,13 +2,14 @@
 @use "bases/reset" as *;
 @use "bases/fonts" as *;
 @use "variables/variables" as *;
-// @use "components":
+@use "components/components" as *;
 
 body {
   background-color: black;
   font-family: $primary-font;
   color: $white-color;
-  z-index: 0;
+  width: 100%;
+  overflow-x: hidden
 }
 header {
   @include flex-center;
@@ -16,11 +17,13 @@ header {
   padding: 1rem 2rem;
   position: relative;
   z-index: 50;
+ 
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    max-width: $max-width;
     ul {
       list-style-type: none;
       @include flex-center;
@@ -53,7 +56,7 @@ nav {
   }
 }
 
-.blur-ellipse {
+.blur-ellipse-500px {
   height: 500px;
   width: 500px;
   border-radius: 500px;
@@ -65,10 +68,12 @@ nav {
   z-index: -1;
 }
 
+
 .hero {
   @include flex-col-center;
   padding: 3rem;
   z-index: 50;
+  position: relative;
   .top_part {
     @include flex-col-center;
     gap: 1rem;
@@ -86,6 +91,17 @@ nav {
       width: 380px;
     }
   }
+  .blur-ellipse-400px {
+  height: 400px;
+  width: 400px;
+  border-radius: 400px;
+  background: rgba(55, 74, 109, 0.5);
+  filter: blur(90px);
+  position: absolute;
+  bottom: 0;
+  right: -150px;
+  z-index: -1;
+}
 }
 
 .subtitle {
@@ -127,38 +143,232 @@ nav {
     height: 32px;
     width: 32px;
     p {
-    //   &:nth-child(3) {
-        color: $white-color !important;
-        font-size: 13px !important;
-        text-transform: none !important;
-        font-weight: 400 !important;
-    //   }
+      //   &:nth-child(3) {
+      color: $white-color !important;
+      font-size: 13px !important;
+      text-transform: none !important;
+      font-weight: 400 !important;
+      //   }
     }
   }
 }
 .big-circle {
-    height: 90px;
-    width:90px;
-    border: 2px solid #02DB8A;
-    filter: drop-shadow(0px 0px 16px #02DB8A);
-    border-radius: 100%;
-    position: relative;
+  height: 90px;
+  width: 90px;
+  border: 2px solid #02db8a;
+  filter: drop-shadow(0px 0px 16px #02db8a);
+  border-radius: 100%;
+  position: relative;
 }
 .small-circle {
-    height: 70px;
-    width: 70px;
-    border: 2px solid #099260;
-    filter: drop-shadow(0px 0px 16px #02DB8A);
-    border-radius: 100%;
-    @include flex-center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    p {
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 140%;
-        text-transform: uppercase;
+  height: 70px;
+  width: 70px;
+  border: 2px solid #099260;
+  filter: drop-shadow(0px 0px 16px #02db8a);
+  border-radius: 100%;
+  @include flex-center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  p {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 140%;
+    text-transform: uppercase;
+  }
+}
+.about {
+  @include flex-center;
+  padding: 4.5rem
+}
+.about_content {
+  max-width: $max-width;
+  @include flex-center;
+  gap: 5rem;
+  & div:first-child {
+    width: fit-content;
+    height: fit-content;
+    max-width: 480px;
+    position: relative;
+    img {
+      width: 100%;
+      border-radius: 8px;
     }
+    .card-blur-default {
+      position: absolute;
+      right: 0;
+      top: 100%;
+      transform: translateY(-50%);
+    }
+    & p:first-child {
+      font-size: 20px;
+      font-weight: 600;
+      // width: 100%;
+      // text-align: center;
+    }
+    & p:last-child {
+      font-size: 13px;
+      text-align: center;
+    }
+  }
+  & > div:last-child {
+    @include flex-col-start;
+    justify-content: center;
+    max-width: 410px;
+    h2 {
+      width: 50%;
+      margin-bottom: 1.5rem;
+    }
+    & p {
+      font-size: 16px;
+      color: $text-color;
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.popular {
+  @include flex-center;
+  padding: 4.5rem 0 3rem 0;
+}
+.popular_content {
+  max-width: $max-width;
+  @include flex-col-center;
+  h2 {
+    text-align: center;
+    text-wrap: wrap;
+    width: 55%;
+    margin-bottom: 4rem;
+  }
+  & > div:last-child {
+    @include flex-center;
+    gap: 1rem;
+    & div:nth-child(1) {
+      width: 8px;
+      height: 8px;
+      background-color: $accent-color;
+      border-radius: 50%;
+    }
+    & div:nth-child(2) {
+      width: 6px;
+      height: 6px;
+      background-color: $text-color;
+      border-radius: 50%;
+      opacity: 0.2
+    }
+    & div:nth-child(3) {
+      width: 6px;
+      height: 6px;
+      background-color: $text-color;
+      border-radius: 50%;
+        opacity: 0.2
+    }
+  }
+}
+.cards-car-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 3rem;
+  gap: 3rem
+}
+
+.features {
+  @include flex-center;
+  padding: 3rem 0;
+  background: url("../../public/assets/map.png");
+  background-size: cover;
+}
+
+.features_content {
+  @include flex-col-center;
+  gap: 4rem;
+  & > div {
+    position: relative;
+    .card-blur-small:nth-of-type(1) {
+      position: absolute;
+      top: 10%;
+      left: -40%
+    }
+  }
+}
+
+
+.featured {
+  @include flex-col-center;
+  padding: 4.5rem 0
+}
+.featured_content {
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  & > div:first-of-type {
+    @include flex-center;
+    gap: 2rem;
+    margin-bottom: 4.5rem;
+    & > div:first-child {
+      @include flex-center;
+      background-color: $accent-color;
+      border-radius: 16px;
+      width: 52px;
+      height: 52px;
+    }
+    & > div {
+      @include flex-center;
+      background-color: $container-color;
+      border-radius: 16px;
+      width: 52px;
+      height: 52px;
+    }
+  }
+}
+
+.featured-cars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4.5rem;
+}
+
+.offer {
+  @include flex-center;
+  padding: 4.5rem 3.5rem;
+  background-image:
+    linear-gradient(180deg, rgba(10, 10, 11, 0.20) 0%, rgba(10, 10, 11, 0.50) 100%),
+    url("../../public/assets/subscribe-bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.offer_content {
+  max-width: $max-width;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  & > div:first-child {
+    h2 {
+      text-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    p {
+      color: $text-color;
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.logos {
+  padding: 4.5rem 0 4rem 0;
+  @include flex-center;
+  & > div {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    max-width: $max-width;
+    align-items: center;
+    gap: 6rem;
+     img {
+      max-width:50px;
+      max-height: 50px;
+      opacity: 0.4;
+    }
+  }
 }

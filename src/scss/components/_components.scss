@@ -1,0 +1,218 @@
+@use "../variables/variables" as *;
+@use "../mixins/mixins" as *;
+
+.card-blur-default {
+  width: 197px;
+  height: 104px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 1rem 1.25rem;
+  @include flex-col-center;
+  gap: 1rem;
+  height: fit-content;
+}
+.card-blur-small {
+  width: 127px;
+  height: fit-content;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 0.75rem 2.5rem;
+  @include flex-col-center;
+  gap: 0.75rem;
+}
+
+.button-blue-default {
+  padding: 14px 2rem;
+  background-color: $accent-color;
+  border-radius: 4px;
+}
+
+.card-car-default {
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  width: 258px;
+  height: 328px;
+  border-radius: 20px;
+  background-color: $container-color;
+  position: relative;
+  overflow: hidden;
+  & > div:nth-child(1) {
+    position: initial;
+    z-index: 10 !important;
+    & p:first-child {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    & p:last-child {
+      font-size: 16px;
+      color: $text-color;
+      margin-bottom: 110px;
+    }
+  }
+  & div:nth-child(2) {
+    img {
+      width: 180px;
+      height: 80px;
+      position: absolute;
+      top: 100px;
+      right: 22px;
+      z-index: 5;
+    }
+  }
+  & > div:nth-child(3) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 165px;
+    row-gap: 8px;
+    margin-bottom: 2rem;
+    & > div {
+      @include flex-align-center;
+      gap: 4px;
+    }
+    p {
+      font-size: 13px;
+    }
+  }
+  & > div:nth-child(4) {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  & > div:nth-child(5) {
+    height: 190px;
+    width: 190px;
+    border-radius: 500px;
+    background: rgba(55, 74, 109, 0.5);
+    filter: blur(60px);
+    position: absolute;
+    top: -44px;
+    left: -44.5px;
+    z-index: 0;
+  }
+}
+
+.card-car-small {
+  padding: 2rem 1.5rem 2rem 1.5rem;
+  width: 248px;
+  height: 312px;
+  border-radius: 20px;
+  background-color: $container-color;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  & > div:nth-child(1) {
+    & p:first-child {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    & p:last-child {
+      font-size: 16px;
+      color: $text-color;
+      margin-bottom: 164px;
+    }
+  }
+  & div:nth-child(2) {
+    img {
+      width: 180px;
+      height: 80px;
+      position: absolute;
+      top: 120px;
+      left: 16px;
+    }
+  }
+  & div:nth-child(5) {
+    height: 180px;
+    width: 150px;
+    border-radius: 500px;
+    background: rgba(55, 74, 109, 0.5);
+    filter: blur(60px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+  .button-icon {
+  background-color: $accent-color;
+  padding: 0.75rem 1rem;
+  border-radius: 20px 0px;
+  @include flex-center;
+  position: absolute;
+  // bottom: ;
+  right: 0;
+}
+}
+
+.button-icon {
+  background-color: $accent-color;
+  padding: 0.75rem 1rem;
+  border-radius: 20px 0px;
+  @include flex-center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+footer {
+  @include flex-col-center;
+  padding: 4.5rem 2rem;
+  gap: 6rem;
+  position: relative;
+  & > p {
+    color: $text-color-light
+  }
+  .blur-ellipse-500px {
+    position: absolute;
+    top: 0;
+    left: -318px
+  }
+  & > div:last-child {
+  height: 400px;
+  width: 400px;
+  border-radius: 400px;
+  background: rgba(55, 74, 109, 0.5);
+  filter: blur(90px);
+  position: absolute;
+  bottom: 5%;
+  right: -10%
+  }
+}
+
+.footer_content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  & > div:first-child {
+    @include flex-col-start;
+    gap: 1.5rem;
+    max-width: 80%;
+    div:first-child {
+       @include flex-center;
+       gap: 4px
+    }
+    & > p {
+      font-size: 13px;
+      color: $text-color
+    }
+  }
+  & > div:last-child {
+    @include flex-col-start;
+    gap: 1.5rem;
+    div {
+      @include flex-center;
+      gap: 1.5rem
+    }
+  }
+}
+
+.footer-links {
+  @include flex-col-start;
+  gap: 1.5rem;
+  div {
+    @include flex-col-start;
+    gap: 0.75rem;
+    a {
+      color: $text-color
+    }
+  }
+}
