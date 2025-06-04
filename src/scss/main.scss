@@ -1,3 +1,4 @@
+@use "./responsive" as *;
 @use "mixins/mixins" as *;
 @use "bases/reset" as *;
 @use "bases/fonts" as *;
@@ -17,19 +18,15 @@ header {
   padding: 1rem 2rem;
   position: relative;
   z-index: 50;
-
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: $max-width;
-    ul {
-      list-style-type: none;
-      @include flex-center;
-      gap: 3rem;
-      z-index: 50;
-    }
+    max-width: $max-width
+  }
+  .burger {
+    display: none
   }
 }
 a {
@@ -48,6 +45,10 @@ a {
 
 nav {
   ul {
+    list-style-type: none;
+    @include flex-center;
+    gap: 3rem;
+    z-index: 50;
     li:first-child {
       a {
         color: $accent-color;
@@ -276,7 +277,9 @@ nav {
   @include flex-center;
   padding: 3rem 0;
   background: url("../../public/assets/map.png");
-  background-size: cover;
+  // background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   position: relative;
   z-index: 50;
 }
@@ -295,21 +298,21 @@ nav {
   gap: 4rem;
   & > div {
     position: relative;
-    .card-blur-small:nth-of-type(1) {
-      position: absolute;
-      top: 10%;
-      left: -40%;
-    }
-    .card-blur-small:nth-of-type(2) {
-      position: absolute;
-      top: 25%;
-      right: -40%;
-    }
-    .card-blur-small:nth-of-type(3) {
-      position: absolute;
-      top: 55%;
-      left: -40%;
-    }
+  }
+  .card-blur-small:nth-of-type(1) {
+    position: absolute;
+    top: 10%;
+    left: -40%;
+  }
+  .card-blur-small:nth-of-type(2) {
+    position: absolute;
+    top: 25%;
+    right: -40%;
+  }
+  .card-blur-small:nth-of-type(3) {
+    position: absolute;
+    top: 55%;
+    left: -40%;
   }
 }
 

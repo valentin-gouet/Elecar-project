@@ -1,0 +1,19 @@
+@media (max-width: 500px) {
+  header {
+    nav {
+      ul {
+        display: none;
+      }
+    }
+    .burger {
+      display: flex !important;
+    }
+  }
+
+  .top_part {
+    gap: 25px;
+    .subtitle {
+      gap: 25px;
+    }
+  }
+}
